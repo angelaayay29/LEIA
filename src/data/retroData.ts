@@ -1,0 +1,88 @@
+import type { RetroData } from '../types';
+
+export const initialRetroData: RetroData = {
+  identity: {
+    sprintNumber: 23,
+    sprintName: 'Sprint 23 — Retrospective Summary',
+    platform: 'Data Plat Platform',
+    dateRange: 'May 15 – May 30, 2025',
+    participants: 12,
+    scrumMaster: 'David',
+    status: 'Completed',
+    programTags: [
+      { label: 'CCN R2', color: 'blue' },
+      { label: 'BEEP', color: 'orange' },
+      { label: 'WoT', color: 'green' },
+    ],
+  },
+  aiInsight:
+    'Sprint 23 delivered 54 story points against a 48-point commitment — a solid +6 surplus driven by strong Identity and Analytics workstreams. Team health rose to 7.8 (+0.6), though the happiness distribution reveals two members in the Stressed bucket, suggesting uneven workload. Scope churn was moderate (+3 added, −2 removed), within the team\'s typical range. Integration remains the primary risk area entering Sprint 24, with two carried action items on cross-team dependency meetings that need resolution in the first two days.',
+  headlineStats: [
+    { id: 'points-delivered', value: '54', label: 'Points delivered', delta: '+6 vs. S22', deltaDirection: 'up' },
+    { id: 'planned-vs-delivered', value: '54 / 48', label: 'Delivered / Planned', subNote: 'Above plan', healthColor: 'green' },
+    { id: 'team-health', value: '7.8', label: 'Team health', delta: '+0.6 vs. S22', deltaDirection: 'up', healthColor: 'green' },
+    { id: 'scope-churn', value: '+3 / −2', label: 'Scope changes', subNote: 'Within typical range', healthColor: 'green' },
+  ],
+  programSnapshots: [
+    { name: 'CCN R2', percentage: 72, delta: '+8% this sprint', remaining: '28 pts remaining', status: 'On track', statusColor: 'green', color: '#3b82f6' },
+    { name: 'BEEP', percentage: 58, delta: '+4% this sprint', remaining: '42 pts remaining', status: 'At risk', statusColor: 'amber', color: '#f59e0b' },
+    { name: 'WoT', percentage: 85, delta: '+12% this sprint', remaining: '15 pts remaining', status: 'On track', statusColor: 'green', color: '#10b981' },
+  ],
+  workstreamProgress: [
+    { name: 'Identity', percentage: 78, status: 'On track', owner: 'Kavita' },
+    { name: 'Guest Events', percentage: 65, status: 'On track', owner: 'Chu' },
+    { name: 'Analytics', percentage: 82, status: 'On track', owner: 'Elaine' },
+    { name: 'Integration', percentage: 45, status: 'At risk', owner: 'Emily' },
+    { name: 'Activation', percentage: 70, status: 'On track', owner: 'Samantha' },
+  ],
+  completedWork: [
+    { workstream: 'Identity', workstreamColor: '#8b5cf6', storyName: 'Build dining reservation event pipeline', program: 'CCN R2', points: 8 },
+    { workstream: 'Identity', workstreamColor: '#8b5cf6', storyName: 'Fix identity resolution edge case', program: 'BEEP', points: 5 },
+    { workstream: 'Analytics', workstreamColor: '#06b6d4', storyName: 'Guest journey funnel dashboard v2', program: 'WoT', points: 13 },
+    { workstream: 'Analytics', workstreamColor: '#06b6d4', storyName: 'Real-time event aggregation service', program: 'CCN R2', points: 8 },
+    { workstream: 'Guest Events', workstreamColor: '#ec4899', storyName: 'Park entry event schema update', program: 'CCN R2', points: 5 },
+    { workstream: 'Integration', workstreamColor: '#f59e0b', storyName: 'Cross-platform API gateway config', program: 'BEEP', points: 8 },
+    { workstream: 'Activation', workstreamColor: '#10b981', storyName: 'Onboarding flow A/B test results', program: 'WoT', points: 3 },
+    { workstream: 'Activation', workstreamColor: '#10b981', storyName: 'Push notification targeting rules', program: 'BEEP', points: 4 },
+  ],
+  wentWell: [
+    { text: 'Strong cross-workstream collaboration on CCN R2 deliverables' },
+    { text: 'Analytics dashboard shipped ahead of schedule' },
+    { text: 'New standup format reduced meeting overrun', recurring: true },
+    { text: 'Pair programming sessions improved code review turnaround' },
+    { text: 'Clear sprint goals set at planning — team aligned from day 1' },
+  ],
+  toImprove: [
+    { text: 'Cross-team dependency meetings still ad hoc — need scheduled cadence', recurring: true },
+    { text: 'Integration testing environment unstable mid-sprint' },
+    { text: 'Requirements clarity on BEEP epics caused rework', recurring: true },
+    { text: 'Late ticket additions disrupted Analytics capacity planning' },
+    { text: 'Documentation lagging behind shipped features' },
+  ],
+  actionItems: [
+    { description: 'Schedule recurring cross-team dependency sync (bi-weekly)', owner: 'David', dueSprint: 'S24', status: 'Carried' },
+    { description: 'Define acceptance criteria template before sprint start', owner: 'Ryan', dueSprint: 'S24', status: 'Carried' },
+    { description: 'Stabilize integration test environment — root cause analysis', owner: 'Emily', dueSprint: 'S24', status: 'In Progress' },
+    { description: 'Create BEEP epic requirements checklist', owner: 'Brian', dueSprint: 'S24', status: 'New' },
+    { description: 'Document shipped Analytics features in Confluence', owner: 'Elaine', dueSprint: 'S25', status: 'New' },
+  ],
+  individualDelivery: [
+    { name: 'Alex Chen', initials: 'AC', role: 'Eng', assigned: 10, completed: 10, status: 'Full delivery', workstream: 'Identity' },
+    { name: 'Jordan Lee', initials: 'JL', role: 'Eng', assigned: 8, completed: 8, status: 'Full delivery', workstream: 'Analytics' },
+    { name: 'Sam Rivera', initials: 'SR', role: 'Eng', assigned: 8, completed: 6, status: 'Partial', workstream: 'Integration' },
+    { name: 'Taylor Kim', initials: 'TK', role: 'Eng', assigned: 5, completed: 5, status: 'Full delivery', workstream: 'Guest Events' },
+    { name: 'Morgan Patel', initials: 'MP', role: 'Eng', assigned: 0, completed: 5, status: '+Unplanned', workstream: 'Activation' },
+    { name: 'Casey Wong', initials: 'CW', role: 'DPE', assigned: 8, completed: 8, status: 'Full delivery', workstream: 'Analytics' },
+    { name: 'Riley Nguyen', initials: 'RN', role: 'DPE', assigned: 5, completed: 5, status: 'Full delivery', workstream: 'Identity' },
+    { name: 'Avery Brooks', initials: 'AB', role: 'DPE', assigned: 8, completed: 7, status: 'Partial', workstream: 'Integration' },
+  ],
+  happinessBuckets: [
+    { label: 'Thriving', count: 3, percentage: 25, color: '#059669' },
+    { label: 'Happy', count: 5, percentage: 42, color: '#34d399' },
+    { label: 'Neutral', count: 2, percentage: 17, color: '#fbbf24' },
+    { label: 'Stressed', count: 2, percentage: 17, color: '#f59e0b' },
+    { label: 'Burned Out', count: 0, percentage: 0, color: '#ef4444' },
+  ],
+  happinessTrend: [6.8, 7.0, 7.2, 7.5, 7.8],
+  happinessAverage: 7.8,
+};
