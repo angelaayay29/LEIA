@@ -1,4 +1,4 @@
-/* ORBIT static data — no build required */
+/* LEIA static data — no build required */
 const ORBIT_WIDGET_ORDER = ['header','ai-insight','headline-stats','program-progress','work-detail','people-capacity','risks-followup'];
 
 const ORBIT_RETRO_META = {
@@ -28,7 +28,7 @@ const ORBIT_RETRO_META = {
     owner: 'David (Scrum Master)',
     ownerWhy: 'Reviews the AI-generated draft, edits for accuracy, and approves the narrative before the retro goes live.',
     dataSources: [
-      'ORBIT Internal Snapshot Storage — this sprint\'s locked metrics (points, health, scope churn) plus prior-sprint baselines for comparison.',
+      'LEIA Snapshot Storage — this sprint\'s locked metrics (points, health, scope churn) plus prior-sprint baselines for comparison.',
       'Retro Tool — what went well, areas to improve, and recurring themes from the ceremony.',
       'EOW Survey — team health score and any open-text verbatims that add context to morale.',
       'AI / Cursor MCP Layer — turns the structured inputs above into a readable paragraph; does not calculate numbers.',
@@ -50,7 +50,7 @@ const ORBIT_RETRO_META = {
       'Jira — sprint report totals for story points completed and originally committed in the sprint.',
       'Jira — issue changelog to detect tickets added to or removed from the sprint mid-flight (scope churn).',
       'EOW Survey — average 1–10 morale score across all responses collected on the last sprint day.',
-      'ORBIT Internal Snapshot Storage — day-1 committed points and prior-sprint values used to calculate delta pills (e.g. vs S22).',
+      'LEIA Snapshot Storage — day-1 committed points and prior-sprint values used to calculate delta pills (e.g. vs S22).',
     ],
     processing: [
       'Sum completed story points from the Jira sprint report for Points Delivered.',
@@ -68,7 +68,7 @@ const ORBIT_RETRO_META = {
     ownerWhy: 'Pulls Done points from Jira, validates percentages with capability leads, and updates status labels before retro publish.',
     dataSources: [
       'Jira — story points on Done tickets, grouped by program label (CCN R2, BEEP, WoT) and workstream label (Identity, Guest Events, Analytics, Integration, Activation).',
-      'ORBIT Internal Snapshot Storage — total estimated program scope (the denominator) and last sprint\'s percentages for delta calculation.',
+      'LEIA Snapshot Storage — total estimated program scope (the denominator) and last sprint\'s percentages for delta calculation.',
     ],
     processing: [
       'Sum Done points per program and divide by the ORBIT scope baseline to get each program card percentage.',
@@ -105,7 +105,7 @@ const ORBIT_RETRO_META = {
     dataSources: [
       'Jira — story points assigned to each person at sprint start and points completed by sprint close.',
       'EOW Survey — individual 1–10 scores used to bucket people into Thriving, Happy, Neutral, Stressed, or Burned Out.',
-      'ORBIT Internal Snapshot Storage — day-1 assigned points per person and five sprints of health scores for the trend sparkline.',
+      'LEIA Snapshot Storage — day-1 assigned points per person and five sprints of health scores for the trend sparkline.',
     ],
     processing: [
       'Read each assignee\'s starting points from the ORBIT day-1 snapshot and completed points from Jira at sprint close.',
@@ -123,7 +123,7 @@ const ORBIT_RETRO_META = {
     ownerWhy: 'Maintains the action item list after each retro and marks items as New, In Progress, or Carried into the next sprint.',
     dataSources: [
       'Jira — tickets with the retro-action label, including description, owner, due sprint, and status.',
-      'ORBIT Internal Snapshot Storage — prior sprint\'s action item list to detect items that rolled forward unchanged.',
+      'LEIA Snapshot Storage — prior sprint\'s action item list to detect items that rolled forward unchanged.',
     ],
     processing: [
       'Fetch all open retro-action tickets from Jira.',
@@ -147,7 +147,7 @@ const ORBIT_PLANNING_META = {
     owner: 'David (Scrum Master)',
     ownerWhy: 'Reviews the AI-generated planning brief, edits for accuracy, and approves it before the planning meeting.',
     dataSources: [
-      'ORBIT Internal Snapshot Storage — rolling velocity average, prior sprint risks, and historical commitment patterns.',
+      'LEIA Snapshot Storage — rolling velocity average, prior sprint risks, and historical commitment patterns.',
       'Jira — current sprint backlog (committed points, blockers, dependency links) and velocity from the last 3–5 closed sprints.',
       'Outlook Calendar — OOO and partial-availability flags for team members during the upcoming sprint dates.',
       'AI / Cursor MCP Layer — turns the structured inputs above into a forward-looking paragraph; does not calculate numbers.',
@@ -170,7 +170,7 @@ const ORBIT_PLANNING_META = {
       'Jira — sum of story points on all tickets in the upcoming sprint backlog, plus ticket count.',
       'Jira — sprint reports from the last 3–5 closed sprints used to calculate average velocity.',
       'Outlook Calendar — OOO events and partial availability to determine how many points the team can actually deliver.',
-      'ORBIT Internal Snapshot Storage — carryover ticket list (open items from the prior sprint) and day-1 capacity baseline.',
+      'LEIA Snapshot Storage — carryover ticket list (open items from the prior sprint) and day-1 capacity baseline.',
     ],
     processing: [
       'Sum committed story points and count tickets in the Jira sprint backlog.',
@@ -185,7 +185,7 @@ const ORBIT_PLANNING_META = {
     ownerWhy: 'Confirms entering-sprint program and workstream baselines with capability leads before planning is published.',
     dataSources: [
       'Jira — committed story points in the upcoming sprint, grouped by program and workstream labels.',
-      'ORBIT Internal Snapshot Storage — total program scope baseline and prior sprint percentages for comparison.',
+      'LEIA Snapshot Storage — total program scope baseline and prior sprint percentages for comparison.',
     ],
     processing: [
       'Sum committed (not Done) points per program label and calculate entering-sprint percentage vs ORBIT scope baseline.',
@@ -201,7 +201,7 @@ const ORBIT_PLANNING_META = {
     owner: 'David (Scrum Master)',
     ownerWhy: 'Assembles sprint goals, committed work table, and velocity chart after planning and before sprint day 1.',
     dataSources: [
-      'ORBIT Internal Snapshot Storage — sprint goal text, confirmed/at-risk flags, and five sprints of velocity history for the chart.',
+      'LEIA Snapshot Storage — sprint goal text, confirmed/at-risk flags, and five sprints of velocity history for the chart.',
       'Jira — full upcoming sprint backlog with story points, program labels, assignees, and priority.',
       'Jira — completed points from the last 5 closed sprint reports for the velocity bar chart.',
     ],
@@ -220,7 +220,7 @@ const ORBIT_PLANNING_META = {
     ownerWhy: 'Collects OOO/availability from the team and Outlook, then validates per-person load before sprint kickoff.',
     dataSources: [
       'Jira — story points assigned to each person in the upcoming sprint backlog.',
-      'ORBIT Internal Snapshot Storage — each person\'s average committed points over the last 3 sprints for benchmark comparison.',
+      'LEIA Snapshot Storage — each person\'s average committed points over the last 3 sprints for benchmark comparison.',
       'Outlook Calendar — formal OOO events; informal partial availability entered manually by David before planning.',
     ],
     processing: [
@@ -238,7 +238,7 @@ const ORBIT_PLANNING_META = {
     ownerWhy: 'Maintains the risk register before sprint kickoff and updates severity and resolution notes as blockers resolve.',
     dataSources: [
       'Jira — open tickets with blocker label or Blocked status on board 13159, plus dependency links (blocks / is blocked by).',
-      'ORBIT Internal Snapshot Storage — unresolved retro action items and risks carried forward from the prior sprint.',
+      'LEIA Snapshot Storage — unresolved retro action items and risks carried forward from the prior sprint.',
     ],
     processing: [
       'Query Jira for open blocker and dependency tickets affecting the upcoming sprint backlog.',

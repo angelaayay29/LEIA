@@ -1,4 +1,4 @@
-/* ORBIT widget renderers */
+/* LEIA widget renderers */
 const pillMap = { blue:'pill-blue', orange:'pill-orange', green:'pill-green', purple:'pill-purple', red:'pill-red', amber:'pill-amber', cyan:'pill-cyan' };
 
 function esc(s) {

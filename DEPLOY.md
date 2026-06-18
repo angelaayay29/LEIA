@@ -1,6 +1,6 @@
-# Deploy ORBIT — share a public link with your team
+# Deploy LEIA — share a public link with your team
 
-ORBIT is a **static site** (HTML/CSS/JS in the `static/` folder). No server or Node.js is required in production.
+LEIA is a **static site** (HTML/CSS/JS in the `static/` folder). No server or Node.js is required in production.
 
 ---
 
@@ -11,7 +11,7 @@ Best if you want a public URL **right now** without using the terminal.
 1. Go to **[app.netlify.com/drop](https://app.netlify.com/drop)** (create a free Netlify account if prompted).
 2. Drag the entire **`static`** folder from Finder onto the page.
 3. Netlify gives you a live URL like `https://random-name-123.netlify.app` — share that link.
-4. Optional: in Netlify → **Site settings → Domain management → Change site name** to pick a nicer URL (e.g. `orbit-gst360.netlify.app`).
+4. Optional: in Netlify → **Site settings → Domain management → Change site name** to pick a nicer URL (e.g. `leia-gst360.netlify.app`).
 
 To update later: drag the `static` folder again, or connect this repo to Netlify for auto-deploys.
 
@@ -19,24 +19,26 @@ To update later: drag the `static` folder again, or connect this repo to Netlify
 
 ## Option B: GitHub Pages (good for ongoing updates)
 
-1. Create a new repository on [github.com/new](https://github.com/new) (e.g. `ORBIT-V1`).
+1. Create a new repository on [github.com/new](https://github.com/new) (e.g. `LEIA-V0`).
 2. In Terminal, from this project folder:
 
 ```bash
-cd /Users/angela.yang2/ORBIT_V1
-git remote add origin https://github.com/YOUR_USERNAME/ORBIT-V1.git
+cd /Users/angela.yang2/LEIA_V0
+git remote add origin https://github.com/YOUR_USERNAME/LEIA-V0.git
 git push -u origin main
 ```
 
 3. On GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 4. The workflow in `.github/workflows/deploy-pages.yml` runs automatically. Your site will be at:
 
-   `https://YOUR_USERNAME.github.io/ORBIT-V1/`
+   `https://YOUR_USERNAME.github.io/LEIA-V0/`
 
 5. Share these links with your team:
-   - Login: `https://YOUR_USERNAME.github.io/ORBIT-V1/#login`
-   - Retro: `https://YOUR_USERNAME.github.io/ORBIT-V1/#retro`
-   - Planning: `https://YOUR_USERNAME.github.io/ORBIT-V1/#planning`
+   - Login: `https://YOUR_USERNAME.github.io/LEIA-V0/#login`
+   - Retro: `https://YOUR_USERNAME.github.io/LEIA-V0/#retro`
+   - Planning: `https://YOUR_USERNAME.github.io/LEIA-V0/#planning`
+
+**Existing live site:** [https://angelaayay29.github.io/ORBIT/](https://angelaayay29.github.io/ORBIT/) — the GitHub repo may still be named ORBIT; that URL works until the repository is renamed.
 
 ---
 
@@ -61,5 +63,5 @@ git push -u origin main
 
 ## What won't work on the public internet
 
-- **Local-only:** Double-clicking `Start ORBIT.command` or `python3 -m http.server` — only people on your Mac/network can reach that.
+- **Local-only:** Double-clicking `Start LEIA.command` or `python3 -m http.server` — only people on your Mac/network can reach that.
 - **You need a host** (Netlify, GitHub Pages, Cloudflare Pages, etc.) to get a shareable `https://` link.

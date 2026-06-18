@@ -6,9 +6,33 @@
     viewer: { password: 'view123', role: 'viewer', displayName: 'Viewer User' },
   };
 
-  let user = JSON.parse(sessionStorage.getItem('orbit-user') || 'null');
-  let retroData = JSON.parse(localStorage.getItem('orbit-retro-data') || 'null') || JSON.parse(JSON.stringify(ORBIT_INITIAL_RETRO));
-  let planningData = JSON.parse(localStorage.getItem('orbit-planning-data') || 'null') || JSON.parse(JSON.stringify(ORBIT_INITIAL_PLANNING));
+  const STORAGE_PREFIX = 'leia-';
+  const LEGACY_PREFIX = 'orbit-';
+
+  function storageGet(key) {
+    return localStorage.getItem(STORAGE_PREFIX + key) ?? localStorage.getItem(LEGACY_PREFIX + key);
+  }
+
+  function storageSet(key, value) {
+    localStorage.setItem(STORAGE_PREFIX + key, value);
+  }
+
+  function sessionGet(key) {
+    return sessionStorage.getItem(STORAGE_PREFIX + key) ?? sessionStorage.getItem(LEGACY_PREFIX + key);
+  }
+
+  function sessionSet(key, value) {
+    sessionStorage.setItem(STORAGE_PREFIX + key, value);
+  }
+
+  function sessionRemove(key) {
+    sessionStorage.removeItem(STORAGE_PREFIX + key);
+    sessionStorage.removeItem(LEGACY_PREFIX + key);
+  }
+
+  let user = JSON.parse(sessionGet('user') || 'null');
+  let retroData = JSON.parse(storageGet('retro-data') || 'null') || JSON.parse(JSON.stringify(ORBIT_INITIAL_RETRO));
+  let planningData = JSON.parse(storageGet('planning-data') || 'null') || JSON.parse(JSON.stringify(ORBIT_INITIAL_PLANNING));
   let retroOrder = [...ORBIT_WIDGET_ORDER];
   let planningOrder = [...ORBIT_WIDGET_ORDER];
   let dragId = null;
@@ -18,28 +42,31 @@
   function isEditor() { return user && user.role === 'editor'; }
 
   function saveData() {
-    localStorage.setItem('orbit-retro-data', JSON.stringify(retroData));
-    localStorage.setItem('orbit-planning-data', JSON.stringify(planningData));
+    storageSet('retro-data', JSON.stringify(retroData));
+    storageSet('planning-data', JSON.stringify(planningData));
   }
 
   function fireStarRain() {
     const container = document.getElementById('star-rain');
     if (!container) return;
     container.innerHTML = '';
-    for (let i = 0; i < 120; i++) {
+    const count = 180;
+    for (let i = 0; i < count; i++) {
       const s = document.createElement('div');
-      const isStreak = Math.random() > 0.65;
-      s.className = isStreak ? 'star-particle streak' : 'star-particle';
+      const roll = Math.random();
+      const isHyperspace = roll > 0.82;
+      const isStreak = !isHyperspace && roll > 0.42;
+      s.className = isHyperspace ? 'star-particle hyperspace' : (isStreak ? 'star-particle streak' : 'star-particle');
       s.style.left = Math.random() * 100 + '%';
-      const size = isStreak ? (2 + Math.random() * 3) : (1 + Math.random() * 3);
+      const size = isHyperspace ? (1.5 + Math.random() * 2) : isStreak ? (2 + Math.random() * 3) : (1 + Math.random() * 3);
       s.style.width = size + 'px';
-      s.style.height = isStreak ? (size * 8) + 'px' : size + 'px';
+      s.style.height = isHyperspace ? (size * 14) + 'px' : isStreak ? (size * 10) + 'px' : size + 'px';
       s.style.animationDelay = Math.random() * 1.2 + 's';
-      s.style.animationDuration = (1.2 + Math.random() * 2.5) + 's';
-      s.style.opacity = (0.4 + Math.random() * 0.6).toString();
+      s.style.animationDuration = (0.8 + Math.random() * 2.2) + 's';
+      s.style.opacity = (0.45 + Math.random() * 0.55).toString();
       container.appendChild(s);
     }
-    setTimeout(() => { container.innerHTML = ''; }, 5000);
+    setTimeout(() => { container.innerHTML = ''; }, 5500);
   }
 
   function route() {
@@ -54,8 +81,13 @@
   }
 
   function renderLogin() {
-    app.innerHTML = `<div class="login-page"><div class="login-card"><div class="login-logo"><h1>ORBIT</h1></div>
-      <p class="login-subtitle">Operations, Risk, and Backlog Intelligence Tracker</p>
+    app.innerHTML = `<div class="login-page"><div class="login-card">
+      <div class="login-logo">
+        <div class="login-sigil" aria-hidden="true">✦</div>
+        <h1>LEIA</h1>
+      </div>
+      <p class="login-tagline">Leadership Executive Intelligence and Agile Tracker</p>
+      <p class="login-subtitle">Sprint intelligence from a galaxy not so far away — may the sprint be with you.</p>
       <form class="login-form" id="login-form">
         <div class="form-group"><label for="username">Username</label><input id="username" type="text" placeholder="editor or viewer" autocomplete="username" /></div>
         <div class="form-group"><label for="password">Password</label><input id="password" type="password" placeholder="Enter password" autocomplete="current-password" /></div>
@@ -66,7 +98,7 @@
           </div>
         </div>
         <p class="login-error" id="login-error" hidden></p>
-        <button type="submit" class="btn-primary">Launch ORBIT</button>
+        <button type="submit" class="btn-primary">Engage LEIA</button>
       </form>
       <div class="login-hint">Demo credentials:<br>Editor — <strong>editor</strong> / <strong>edit123</strong><br>Viewer — <strong>viewer</strong> / <strong>view123</strong></div>
     </div></div>`;
@@ -90,7 +122,7 @@
       else if (username === 'viewer' && password === DEMO.viewer.password) matched = DEMO.viewer;
       if (matched) {
         user = { username, role: matched.role, displayName: matched.displayName };
-        sessionStorage.setItem('orbit-user', JSON.stringify(user));
+        sessionSet('user', JSON.stringify(user));
         fireStarRain();
         location.hash = 'retro';
       } else {
@@ -103,12 +135,12 @@
 
   function renderNav(active) {
     const roleCls = isEditor() ? 'editor' : 'viewer';
-    return `<nav class="nav-bar"><div class="nav-logo">ORBIT</div>
+    return `<nav class="nav-bar"><div class="nav-logo">LEIA</div>
       <ul class="nav-links"><li><a href="#retro" class="${active==='retro'?'active':''}">Retrospective</a></li>
       <li><a href="#planning" class="${active==='planning'?'active':''}">Planning</a></li></ul>
       <div class="nav-user"><span>${esc(user.displayName)}</span>
       <span class="role-badge ${roleCls}">${isEditor()?'Editor':'Viewer'}</span>
-      <button class="btn-logout" id="logout-btn">Logout</button></div></nav><div class="gradient-line"></div>`;
+      <button class="btn-logout" id="logout-btn">Logout</button></div></nav><div class="gradient-line lightsaber-line"></div>`;
   }
 
   function renderDashboard(page) {
@@ -135,7 +167,7 @@
 
     document.getElementById('logout-btn').addEventListener('click', () => {
       user = null;
-      sessionStorage.removeItem('orbit-user');
+      sessionRemove('user');
       location.hash = 'login';
     });
 
