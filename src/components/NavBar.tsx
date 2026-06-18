@@ -18,7 +18,7 @@ export function NavBar() {
   return (
     <>
       <nav className="nav-bar">
-        <div className="nav-logo">ORBIT</div>
+        <div className="nav-logo"><span className="nav-logo-mark" aria-hidden="true">✦</span> LEIA</div>
         <ul className="nav-links">
           <li>
             <NavLink to="/retro" onClick={handleNavClick} className={({ isActive }) => (isActive ? 'active' : '')}>

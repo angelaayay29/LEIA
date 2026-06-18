@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { DataProvider } from './context/DataContext';
 import { NavBar } from './components/NavBar';
@@ -7,6 +7,7 @@ import { LoginPage } from './pages/LoginPage';
 import { RetroPage } from './pages/RetroPage';
 import { PlanningPage } from './pages/PlanningPage';
 import type { ReactNode } from 'react';
+import { useEffect } from 'react';
 
 function ProtectedRoute({ children }: { children: ReactNode }) {
   const { user } = useAuth();
@@ -23,9 +24,19 @@ function AppLayout({ children }: { children: ReactNode }) {
   );
 }
 
+function DocumentTitle() {
+  const location = useLocation();
+  useEffect(() => {
+    document.title = 'LEIA — Leadership Executive Intelligence and Agile Tracker';
+  }, [location.pathname]);
+  return null;
+}
+
 function AppRoutes() {
   return (
-    <Routes>
+    <>
+      <DocumentTitle />
+      <Routes>
       <Route path="/login" element={<LoginPage />} />
       <Route
         path="/retro"
@@ -49,6 +60,7 @@ function AppRoutes() {
       />
       <Route path="*" element={<Navigate to="/login" replace />} />
     </Routes>
+    </>
   );
 }
 

@@ -1,4 +1,4 @@
-name: Deploy ORBIT to GitHub Pages
+name: Deploy LEIA to GitHub Pages
 
 on:
   push:

@@ -1,4 +1,4 @@
-# Netlify — publish the static ORBIT site (no build step)
+# Netlify — publish the static LEIA site (no build step)
 [build]
   publish = "static"
 

@@ -31,10 +31,10 @@
   }
 
   let user = JSON.parse(sessionGet('user') || 'null');
-  let retroData = JSON.parse(storageGet('retro-data') || 'null') || JSON.parse(JSON.stringify(ORBIT_INITIAL_RETRO));
-  let planningData = JSON.parse(storageGet('planning-data') || 'null') || JSON.parse(JSON.stringify(ORBIT_INITIAL_PLANNING));
-  let retroOrder = [...ORBIT_WIDGET_ORDER];
-  let planningOrder = [...ORBIT_WIDGET_ORDER];
+  let retroData = JSON.parse(storageGet('retro-data') || 'null') || JSON.parse(JSON.stringify(LEIA_INITIAL_RETRO));
+  let planningData = JSON.parse(storageGet('planning-data') || 'null') || JSON.parse(JSON.stringify(LEIA_INITIAL_PLANNING));
+  let retroOrder = [...LEIA_WIDGET_ORDER];
+  let planningOrder = [...LEIA_WIDGET_ORDER];
   let dragId = null;
 
   const app = document.getElementById('app');
@@ -70,6 +70,7 @@
   }
 
   function route() {
+    document.title = 'LEIA — Leadership Executive Intelligence and Agile Tracker';
     const hash = location.hash.slice(1) || 'login';
     if (!user && hash !== 'login') { location.hash = 'login'; return; }
     if (user && hash === 'login') { location.hash = 'retro'; return; }
@@ -135,7 +136,7 @@
 
   function renderNav(active) {
     const roleCls = isEditor() ? 'editor' : 'viewer';
-    return `<nav class="nav-bar"><div class="nav-logo">LEIA</div>
+    return `<nav class="nav-bar"><div class="nav-logo"><span class="nav-logo-mark" aria-hidden="true">✦</span> LEIA</div>
       <ul class="nav-links"><li><a href="#retro" class="${active==='retro'?'active':''}">Retrospective</a></li>
       <li><a href="#planning" class="${active==='planning'?'active':''}">Planning</a></li></ul>
       <div class="nav-user"><span>${esc(user.displayName)}</span>
@@ -182,7 +183,7 @@
 
   function bindWidgetInteractions(page) {
     const flyout = document.getElementById('widget-spec-flyout');
-    const metaMap = page === 'retro' ? ORBIT_RETRO_META : ORBIT_PLANNING_META;
+    const metaMap = page === 'retro' ? LEIA_RETRO_META : LEIA_PLANNING_META;
     let activeWidget = null;
 
     const hideFlyout = () => {

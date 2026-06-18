@@ -28,10 +28,10 @@ export function LoginPage() {
     <div className="login-page">
       <div className="login-card">
         <div className="login-logo">
-          <h1>ORBIT</h1>
+          <h1>LEIA</h1>
         </div>
         <p className="login-subtitle">
-          Operations, Risk, and Backlog Intelligence Tracker
+          Leadership Executive Intelligence and Agile Tracker
         </p>
 
         <form className="login-form" onSubmit={handleSubmit}>
@@ -83,7 +83,7 @@ export function LoginPage() {
 
           {error && <p className="login-error">{error}</p>}
 
-          <button type="submit" className="btn-primary">Launch ORBIT</button>
+          <button type="submit" className="btn-primary">Engage LEIA</button>
         </form>
 
         <div className="login-hint">
