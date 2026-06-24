@@ -1,0 +1,1749 @@
+{
+  "meta": {
+    "source": "https://disneyexperiences.atlassian.net",
+    "project": "GST360",
+    "boardId": 608,
+    "boardUrl": "https://disneyexperiences.atlassian.net/jira/software/c/projects/GST360/boards/608/backlog",
+    "syncedAt": "2026-06-24T19:42:25Z",
+    "retroSprint": "Guest360 Sprint 8",
+    "planningSprint": "Guest360 Sprint 9",
+    "storyPointsField": "customfield_10042",
+    "programProgressFormula": "done_tasks / total_sprint_attributed_tasks per program (GST360)"
+  },
+  "retro": {
+    "identity": {
+      "sprintNumber": 8,
+      "sprintName": "Guest360 Sprint 8 \u2014 Retrospective Summary",
+      "platform": "Guest360 CDP",
+      "dateRange": "2026-06-17 \u2013 2026-07-01",
+      "participants": 9,
+      "scrumMaster": "David",
+      "status": "In progress",
+      "programTags": [
+        {
+          "label": "CCN R2",
+          "color": "blue"
+        }
+      ]
+    },
+    "aiInsight": "Guest360 Sprint 8 on Guest360 (board 608) has delivered so far 14 story points across 15 completed tickets of 73 planned. Blocked items remain a focus \u2014 1 ticket(s) carried dependency risk. Data synced live from https://disneyexperiences.atlassian.net via Jira MCP.",
+    "executiveBrief": {
+      "needs": [
+        {
+          "text": "Confirm Guest360 Sprint 8 delivery narrative: 14 of 73 story points completed (15 stories).",
+          "checked": false
+        },
+        {
+          "text": "Delivery gap: 59 story points not completed \u2014 decide what carries to the next sprint.",
+          "checked": false
+        },
+        {
+          "text": "Review program progress \u2014 each % is done tasks \u00f7 all sprint-attributed GST360 tasks for that program.",
+          "checked": false
+        },
+        {
+          "text": "Scan individual delivery table for uneven load or partial completions before approving carry-forward scope.",
+          "checked": false
+        }
+      ],
+      "howToHelp": [
+        {
+          "text": "Escalate 1 blocked GST360 ticket(s) still open at sprint end.",
+          "checked": false
+        },
+        {
+          "text": "Align with program owners on deprioritized scope vs. capacity constraints.",
+          "checked": false
+        }
+      ]
+    },
+    "headlineStats": [
+      {
+        "id": "points-delivered",
+        "value": "14",
+        "label": "Points delivered",
+        "delta": "15 stories done",
+        "deltaDirection": "up",
+        "numericValue": 14,
+        "baselineCompare": 73,
+        "healthColor": "red"
+      },
+      {
+        "id": "planned-vs-delivered",
+        "value": "14 / 73",
+        "label": "Delivered / Planned",
+        "subNote": "Below plan",
+        "healthColor": "red"
+      },
+      {
+        "id": "team-health",
+        "value": "\u2014",
+        "label": "Team health",
+        "subNote": "EOW survey not in Jira",
+        "healthColor": "amber"
+      },
+      {
+        "id": "scope-churn",
+        "value": "\u2014",
+        "label": "Scope changes",
+        "subNote": "Requires changelog export",
+        "healthColor": "amber"
+      }
+    ],
+    "programSnapshots": [
+      {
+        "name": "CCN R2",
+        "percentage": 52,
+        "delta": "115 of 220 tasks done",
+        "remaining": "105 tasks remaining",
+        "status": "On track",
+        "statusColor": "green",
+        "color": "#3b82f6",
+        "doneTasks": 115,
+        "totalTasks": 220
+      }
+    ],
+    "workstreamProgress": [
+      {
+        "name": "Guest Events",
+        "percentage": 24,
+        "status": "At risk",
+        "owner": "\u2014",
+        "doneTasks": 17,
+        "totalTasks": 70
+      },
+      {
+        "name": "General",
+        "percentage": 100,
+        "status": "On track",
+        "owner": "\u2014",
+        "doneTasks": 50,
+        "totalTasks": 50
+      },
+      {
+        "name": "Core Platform",
+        "percentage": 43,
+        "status": "On track",
+        "owner": "\u2014",
+        "doneTasks": 20,
+        "totalTasks": 46
+      },
+      {
+        "name": "Guest Identity",
+        "percentage": 8,
+        "status": "At risk",
+        "owner": "\u2014",
+        "doneTasks": 1,
+        "totalTasks": 13
+      },
+      {
+        "name": "Identity",
+        "percentage": 31,
+        "status": "At risk",
+        "owner": "\u2014",
+        "doneTasks": 4,
+        "totalTasks": 13
+      },
+      {
+        "name": "Guest Event",
+        "percentage": 100,
+        "status": "On track",
+        "owner": "\u2014",
+        "doneTasks": 10,
+        "totalTasks": 10
+      },
+      {
+        "name": "API",
+        "percentage": 100,
+        "status": "On track",
+        "owner": "\u2014",
+        "doneTasks": 9,
+        "totalTasks": 9
+      },
+      {
+        "name": "Integration",
+        "percentage": 67,
+        "status": "On track",
+        "owner": "\u2014",
+        "doneTasks": 4,
+        "totalTasks": 6
+      }
+    ],
+    "completedWork": [
+      {
+        "workstream": "Integration",
+        "workstreamColor": "#f59e0b",
+        "storyName": "Smoke tests \u2014 internal and external Apigee base URLs",
+        "program": "CCN R2",
+        "points": 2
+      },
+      {
+        "workstream": "Identity",
+        "workstreamColor": "#8b5cf6",
+        "storyName": "Add Reservation Number to \"external_key\" GSI",
+        "program": "CCN R2",
+        "points": 2
+      },
+      {
+        "workstream": "Identity",
+        "workstreamColor": "#8b5cf6",
+        "storyName": "Finalization of Adding Phone Number to \"external_key\" GSI",
+        "program": "CCN R2",
+        "points": 1
+      },
+      {
+        "workstream": "Core Platform",
+        "workstreamColor": "#6366f1",
+        "storyName": "Always Forward P2 Monitors to BigPanda",
+        "program": "CCN R2",
+        "points": 1
+      },
+      {
+        "workstream": "Core Platform",
+        "workstreamColor": "#6366f1",
+        "storyName": "Configure P2 Alarms",
+        "program": "CCN R2",
+        "points": 1
+      },
+      {
+        "workstream": "Core Platform",
+        "workstreamColor": "#6366f1",
+        "storyName": "Review impact of Salesforce External IP list update",
+        "program": "CCN R2",
+        "points": 1
+      },
+      {
+        "workstream": "Core Platform",
+        "workstreamColor": "#6366f1",
+        "storyName": "Update DPP Universe Audience Reach dashboard and dataset",
+        "program": "CCN R2",
+        "points": 1
+      },
+      {
+        "workstream": "Guest Identity",
+        "workstreamColor": "#64748b",
+        "storyName": "Finalize Plan for Profile Reload (Wakanda + Accented Names)",
+        "program": "CCN R2",
+        "points": 0
+      },
+      {
+        "workstream": "Integration",
+        "workstreamColor": "#f59e0b",
+        "storyName": "Review and Deployment of Ordering Added to API Endpoint",
+        "program": "CCN R2",
+        "points": 0
+      },
+      {
+        "workstream": "Integration",
+        "workstreamColor": "#f59e0b",
+        "storyName": "API | Finalization of Giving Permissions to Runner to Post to ECR in Production",
+        "program": "CCN R2",
+        "points": 1
+      },
+      {
+        "workstream": "Core Platform",
+        "workstreamColor": "#6366f1",
+        "storyName": "Retry Redesign - Deploying Operationalization and Triage",
+        "program": "CCN R2",
+        "points": 1
+      },
+      {
+        "workstream": "General",
+        "workstreamColor": "#64748b",
+        "storyName": "Set up new computer",
+        "program": "CCN R2",
+        "points": 1
+      },
+      {
+        "workstream": "Core Platform",
+        "workstreamColor": "#6366f1",
+        "storyName": "CICD | Platform Modules CI wave deployment and workflow naming standardization",
+        "program": "CCN R2",
+        "points": 2
+      },
+      {
+        "workstream": "Core Platform",
+        "workstreamColor": "#6366f1",
+        "storyName": "CICD | Add g360_identity_api to deploy-order manifest and expand CI/CD to 4 waves",
+        "program": "CCN R2",
+        "points": 0
+      },
+      {
+        "workstream": "Core Platform",
+        "workstreamColor": "#6366f1",
+        "storyName": "Security | Redact Authorization header before logging in SDK HTTP client",
+        "program": "CCN R2",
+        "points": 0
+      }
+    ],
+    "wentWell": [
+      {
+        "text": "15 stories completed in Guest360 Sprint 8"
+      },
+      {
+        "text": "API and platform deployment work closed successfully"
+      },
+      {
+        "text": "Event router and retry redesign milestones reached"
+      }
+    ],
+    "toImprove": [
+      {
+        "text": "Story points not consistently filled on all GST360 tickets",
+        "recurring": true
+      },
+      {
+        "text": "Blocked dependencies need earlier escalation",
+        "recurring": true
+      },
+      {
+        "text": "Align program tags (CCN/BEEP/WoT) on epics and stories"
+      }
+    ],
+    "actionItems": [
+      {
+        "description": "Enforce story point estimates on all sprint tickets",
+        "owner": "David",
+        "dueSprint": "S9",
+        "status": "New"
+      }
+    ],
+    "individualDelivery": [
+      {
+        "name": "Bradley Murry",
+        "initials": "BM",
+        "role": "Eng",
+        "assigned": 17,
+        "completed": 2,
+        "workstream": "Guest Events",
+        "status": "Partial"
+      },
+      {
+        "name": "Chiu Chow",
+        "initials": "CC",
+        "role": "Eng",
+        "assigned": 5,
+        "completed": 0,
+        "workstream": "Guest Events",
+        "status": "Partial"
+      },
+      {
+        "name": "Kavida Sankar",
+        "initials": "KS",
+        "role": "DPE",
+        "assigned": 11,
+        "completed": 0,
+        "workstream": "Guest Identity",
+        "status": "Partial"
+      },
+      {
+        "name": "Kimberly Marroquin",
+        "initials": "KM",
+        "role": "Eng",
+        "assigned": 5,
+        "completed": 0,
+        "workstream": "Integration",
+        "status": "Partial"
+      },
+      {
+        "name": "Luis Rivera",
+        "initials": "LR",
+        "role": "Eng",
+        "assigned": 8,
+        "completed": 2,
+        "workstream": "Core Platform",
+        "status": "Partial"
+      },
+      {
+        "name": "Rachelle DeMeyer Mulhall",
+        "initials": "RM",
+        "role": "Eng",
+        "assigned": 3,
+        "completed": 0,
+        "workstream": "Core Platform",
+        "status": "Partial"
+      },
+      {
+        "name": "Ryan Anderson",
+        "initials": "RA",
+        "role": "Eng",
+        "assigned": 12,
+        "completed": 5,
+        "workstream": "Core Platform",
+        "status": "Partial"
+      },
+      {
+        "name": "Samantha Zellers",
+        "initials": "SZ",
+        "role": "Eng",
+        "assigned": 1,
+        "completed": 0,
+        "workstream": "Core Platform",
+        "status": "Partial"
+      },
+      {
+        "name": "Shachy Rivas",
+        "initials": "SR",
+        "role": "Eng",
+        "assigned": 11,
+        "completed": 5,
+        "workstream": "Identity",
+        "status": "Partial"
+      }
+    ],
+    "happinessBuckets": [
+      {
+        "label": "Thriving",
+        "count": 0,
+        "percentage": 0,
+        "color": "#059669"
+      },
+      {
+        "label": "Happy",
+        "count": 0,
+        "percentage": 0,
+        "color": "#34d399"
+      },
+      {
+        "label": "Neutral",
+        "count": 0,
+        "percentage": 0,
+        "color": "#fbbf24"
+      },
+      {
+        "label": "Stressed",
+        "count": 0,
+        "percentage": 0,
+        "color": "#f59e0b"
+      },
+      {
+        "label": "Burned Out",
+        "count": 0,
+        "percentage": 0,
+        "color": "#ef4444"
+      }
+    ],
+    "happinessTrend": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "happinessAverage": 0
+  },
+  "planning": {
+    "identity": {
+      "sprintNumber": 9,
+      "sprintName": "Guest360 Sprint 9 \u2014 Planning Summary",
+      "platform": "Guest360 CDP",
+      "dateRange": "2026-07-01 \u2013 2026-07-15",
+      "participants": 5,
+      "scrumMaster": "David",
+      "sprintLengthDays": 14,
+      "quarterWeek": "Qq W25",
+      "programTags": [
+        {
+          "label": "CCN R2",
+          "color": "blue"
+        }
+      ]
+    },
+    "aiInsight": "Guest360 Sprint 9 commits 159 story points across 77 stories \u2014 a modest stretch vs a 18-point rolling average from prior closed sprints. Plan pulled from https://disneyexperiences.atlassian.net backlog (board 608).",
+    "executiveBrief": {
+      "needs": [
+        {
+          "text": "Approve Guest360 Sprint 9 commitment: 159 story points vs 18-pt rolling velocity (+141 delta).",
+          "checked": false
+        },
+        {
+          "text": "Confirm program goals and at-risk flags before sprint kickoff.",
+          "checked": false
+        },
+        {
+          "text": "Review team capacity table for over-loaded assignees and OOO impacts.",
+          "checked": false
+        }
+      ],
+      "howToHelp": [
+        {
+          "text": "Cover or redistribute load for Kimberly Marroquin \u2014 OOO D6, D7, D8, D9, D10",
+          "checked": false
+        }
+      ]
+    },
+    "headlineStats": [
+      {
+        "id": "committed-points",
+        "value": "159",
+        "label": "Committed points",
+        "subNote": "Capacity: ~175 pts",
+        "numericValue": 159,
+        "baselineCompare": 18,
+        "healthColor": "green",
+        "delta": "+141 vs avg",
+        "deltaDirection": "up"
+      },
+      {
+        "id": "avg-velocity",
+        "value": "18",
+        "label": "Avg velocity (closed sprints)",
+        "subNote": "Baseline for green/red comparison"
+      },
+      {
+        "id": "stories-in-scope",
+        "value": "77",
+        "label": "Stories in scope",
+        "subNote": "No blockers flagged",
+        "healthColor": "green"
+      },
+      {
+        "id": "capacity-utilized",
+        "value": "91%",
+        "label": "Capacity utilized",
+        "subNote": "Healthy range",
+        "healthColor": "green"
+      }
+    ],
+    "programSnapshots": [
+      {
+        "name": "CCN R2",
+        "percentage": 52,
+        "delta": "115 of 220 tasks done",
+        "remaining": "105 tasks remaining",
+        "status": "On track",
+        "statusColor": "green",
+        "color": "#3b82f6",
+        "doneTasks": 115,
+        "totalTasks": 220
+      }
+    ],
+    "workstreamProgress": [
+      {
+        "name": "Guest Events",
+        "percentage": 24,
+        "status": "At risk",
+        "owner": "\u2014",
+        "doneTasks": 17,
+        "totalTasks": 70
+      },
+      {
+        "name": "General",
+        "percentage": 100,
+        "status": "On track",
+        "owner": "\u2014",
+        "doneTasks": 50,
+        "totalTasks": 50
+      },
+      {
+        "name": "Core Platform",
+        "percentage": 43,
+        "status": "On track",
+        "owner": "\u2014",
+        "doneTasks": 20,
+        "totalTasks": 46
+      },
+      {
+        "name": "Guest Identity",
+        "percentage": 8,
+        "status": "At risk",
+        "owner": "\u2014",
+        "doneTasks": 1,
+        "totalTasks": 13
+      },
+      {
+        "name": "Identity",
+        "percentage": 31,
+        "status": "At risk",
+        "owner": "\u2014",
+        "doneTasks": 4,
+        "totalTasks": 13
+      },
+      {
+        "name": "Guest Event",
+        "percentage": 100,
+        "status": "On track",
+        "owner": "\u2014",
+        "doneTasks": 10,
+        "totalTasks": 10
+      },
+      {
+        "name": "API",
+        "percentage": 100,
+        "status": "On track",
+        "owner": "\u2014",
+        "doneTasks": 9,
+        "totalTasks": 9
+      },
+      {
+        "name": "Integration",
+        "percentage": 67,
+        "status": "On track",
+        "owner": "\u2014",
+        "doneTasks": 4,
+        "totalTasks": 6
+      }
+    ],
+    "programGoals": [
+      {
+        "program": "CCN R2",
+        "color": "#3b82f6",
+        "goals": [
+          {
+            "text": "Deliver committed CCN R2 scope in Guest360 Sprint 9",
+            "confirmed": true,
+            "owner": "David"
+          }
+        ]
+      }
+    ],
+    "committedWork": [
+      {
+        "workstream": "Core Platform",
+        "workstreamColor": "#6366f1",
+        "storyName": "Design Placeholder - Core Platform | Sustainment | Automated Deployments",
+        "ticketKey": "GST360-452",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 2,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Core Platform",
+        "workstreamColor": "#6366f1",
+        "storyName": "Development Placeholder - Atoms and Molecules",
+        "ticketKey": "GST360-455",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 8,
+        "priority": "Medium",
+        "owners": [
+          "Kimberly Marroquin"
+        ]
+      },
+      {
+        "workstream": "Core Platform",
+        "workstreamColor": "#6366f1",
+        "storyName": "Design Placeholder - Core Platform | Sustainment | Event Migration",
+        "ticketKey": "GST360-717",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 3,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | BEEP | WDW Lightning Lane | Generate Identity Resolution DAG",
+        "ticketKey": "GST360-617",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 1,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | BEEP | WDW Lightning Lane | Create Guest Events Specs",
+        "ticketKey": "GST360-618",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 2,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | BEEP | WDW Lightning Lane | Generate Guest Event DAG",
+        "ticketKey": "GST360-619",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 3,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | BEEP | WDW Lightning Lane | Create Historical Load Specs",
+        "ticketKey": "GST360-620",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 1,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | BEEP | WDW Lightning Lane | Generate Historical Snowflake Table",
+        "ticketKey": "GST360-621",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 2,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | BEEP | WDW Lightning Lane | Historical Load into ODS",
+        "ticketKey": "GST360-622",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 2,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | BEEP | WDW Lightning Lane | Run Historical DAG (Prod Only)",
+        "ticketKey": "GST360-623",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 1,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | BEEP | WDW Lightning Lane | Run Real Time DAG",
+        "ticketKey": "GST360-624",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 1,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Placeholder - Guest360 Test Suite",
+        "workstreamColor": "#64748b",
+        "storyName": "Placeholder - Guest360 Test Suite",
+        "ticketKey": "GST360-730",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 8,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Placeholder - Guest Insights",
+        "workstreamColor": "#64748b",
+        "storyName": "Placeholder - Guest Insights",
+        "ticketKey": "GST360-738",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 8,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | BEEP | WDW Lightning Lane | Discovery",
+        "ticketKey": "GST360-615",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 1,
+        "priority": "Medium",
+        "owners": [
+          "Emily Moye"
+        ]
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | BEEP | WDW Resorts | Discovery",
+        "ticketKey": "GST360-665",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 1,
+        "priority": "Medium",
+        "owners": [
+          "Emily Moye"
+        ]
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | BEEP | Tickets - Behavior & Redemption | Discovery",
+        "ticketKey": "GST360-685",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 1,
+        "priority": "Medium",
+        "owners": [
+          "Emily Moye"
+        ]
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | BEEP | Tickets - Product Definition & Attributes | Discovery",
+        "ticketKey": "GST360-695",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 1,
+        "priority": "Medium",
+        "owners": [
+          "Emily Moye"
+        ]
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | CCN R2 | DLR Theme Park Reservations | Discovery",
+        "ticketKey": "GST360-555",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 1,
+        "priority": "Medium",
+        "owners": [
+          "Emily Moye"
+        ]
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | CCN R2 | DLR Theme Park Reservations | Product Requirements & Refinement",
+        "ticketKey": "GST360-556",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 1,
+        "priority": "Medium",
+        "owners": [
+          "Emily Moye"
+        ]
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | BEEP | Affiliations | Discovery",
+        "ticketKey": "GST360-565",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 1,
+        "priority": "Medium",
+        "owners": [
+          "Emily Moye"
+        ]
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | BEEP | Affiliations | Product Requirements & Refinement",
+        "ticketKey": "GST360-566",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 1,
+        "priority": "Medium",
+        "owners": [
+          "Emily Moye"
+        ]
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | BEEP | WDW Lightning Lane | Product Requirements & Refinement",
+        "ticketKey": "GST360-616",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 1,
+        "priority": "Medium",
+        "owners": [
+          "Emily Moye"
+        ]
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | BEEP | WDW Resorts | Product Requirements & Refinement",
+        "ticketKey": "GST360-666",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 1,
+        "priority": "Medium",
+        "owners": [
+          "Emily Moye"
+        ]
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | BEEP | Tickets - Behavior & Redemption | Product Requirements & Refinement",
+        "ticketKey": "GST360-686",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 1,
+        "priority": "Medium",
+        "owners": [
+          "Emily Moye"
+        ]
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | BEEP | Tickets - Product Definition & Attributes | Product Requirements & Refinement",
+        "ticketKey": "GST360-696",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 1,
+        "priority": "Medium",
+        "owners": [
+          "Emily Moye"
+        ]
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | CCN R2 | AI Discovery Agent Bookable Options | Product Requirements & Refinement",
+        "ticketKey": "GST360-516",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 1,
+        "priority": "Medium",
+        "owners": [
+          "Emily Moye"
+        ]
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | CCN R2 | AI Discovery Agent Bookable Options | Discovery",
+        "ticketKey": "GST360-515",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 1,
+        "priority": "Medium",
+        "owners": [
+          "Emily Moye"
+        ]
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | CCN R2 | AI Discovery Agent Search History | Discovery",
+        "ticketKey": "GST360-525",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 1,
+        "priority": "Medium",
+        "owners": [
+          "Emily Moye"
+        ]
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | CCN R2 | AI Discovery Agent Search History | Product Requirements & Refinement",
+        "ticketKey": "GST360-526",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 1,
+        "priority": "Medium",
+        "owners": [
+          "Emily Moye"
+        ]
+      },
+      {
+        "workstream": "Core Platform",
+        "workstreamColor": "#6366f1",
+        "storyName": "Development Placeholder - Atoms and Molecules",
+        "ticketKey": "GST360-456",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 6,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Core Platform",
+        "workstreamColor": "#6366f1",
+        "storyName": "Validation Placeholder - Atoms and Molecules",
+        "ticketKey": "GST360-457",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 2,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Core Platform",
+        "workstreamColor": "#6366f1",
+        "storyName": "Validation Placeholder - Atoms and Molecules",
+        "ticketKey": "GST360-458",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 2,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | CCN R2 | DLR Theme Park Reservations | Generate Identity Resolution DAG",
+        "ticketKey": "GST360-557",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 1,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | CCN R2 | DLR Theme Park Reservations | Generate Guest Event DAG",
+        "ticketKey": "GST360-559",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 3,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | CCN R2 | DLR Theme Park Reservations | Create Historical Load Specs",
+        "ticketKey": "GST360-560",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 1,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | CCN R2 | DLR Theme Park Reservations | Generate Historical Snowflake Table",
+        "ticketKey": "GST360-561",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 2,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | CCN R2 | DLR Theme Park Reservations | Historical Load into ODS",
+        "ticketKey": "GST360-562",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 2,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | CCN R2 | DLR Theme Park Reservations | Run Real Time DAG",
+        "ticketKey": "GST360-564",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 1,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | CCN R2 | DLR Theme Park Reservations | Run Historical DAG (Prod Only)",
+        "ticketKey": "GST360-563",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 1,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Identity",
+        "workstreamColor": "#64748b",
+        "storyName": "Design Placeholder - Guest Identity | Identity Resolution | Serverless Cache Migration",
+        "ticketKey": "GST360-720",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 1,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Identity",
+        "workstreamColor": "#64748b",
+        "storyName": "Development Placeholder - Guest Identity | Identity Resolution | Serverless Cache Migration",
+        "ticketKey": "GST360-721",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 5,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Identity",
+        "workstreamColor": "#64748b",
+        "storyName": "Validation Placeholder - Guest Identity | Identity Resolution | Serverless Cache Migration",
+        "ticketKey": "GST360-722",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 2,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | CCN R2 | AI Discovery Agent Bookable Options | Generate Identity Resolution DAG",
+        "ticketKey": "GST360-517",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 1,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | CCN R2 | AI Discovery Agent Bookable Options | Create Guest Events Specs",
+        "ticketKey": "GST360-518",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 2,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | CCN R2 | AI Discovery Agent Bookable Options | Generate Guest Event DAG",
+        "ticketKey": "GST360-519",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 3,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | CCN R2 | AI Discovery Agent Bookable Options | Create Historical Load Specs",
+        "ticketKey": "GST360-520",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 2,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | CCN R2 | AI Discovery Agent Bookable Options | Generate Historical Snowflake Table",
+        "ticketKey": "GST360-521",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 2,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | CCN R2 | AI Discovery Agent Bookable Options | Historical Load into ODS",
+        "ticketKey": "GST360-522",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 1,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | CCN R2 | AI Discovery Agent Bookable Options | Run Historical DAG (Prod Only)",
+        "ticketKey": "GST360-523",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 1,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | CCN R2 | AI Discovery Agent Bookable Options | Run Real Time DAG",
+        "ticketKey": "GST360-524",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 1,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | CCN R2 | AI Discovery Agent Search History | Generate Identity Resolution DAG",
+        "ticketKey": "GST360-527",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 1,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | CCN R2 | AI Discovery Agent Search History | Generate Guest Event DAG",
+        "ticketKey": "GST360-529",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 3,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | CCN R2 | AI Discovery Agent Search History | Create Historical Load Specs",
+        "ticketKey": "GST360-530",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 1,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | CCN R2 | AI Discovery Agent Search History | Generate Historical Snowflake Table",
+        "ticketKey": "GST360-531",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 2,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | CCN R2 | AI Discovery Agent Search History | Historical Load into ODS",
+        "ticketKey": "GST360-532",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 1,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | CCN R2 | AI Discovery Agent Search History | Run Historical DAG (Prod Only)",
+        "ticketKey": "GST360-533",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 2,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Events | CCN R2 | AI Discovery Agent Search History | Run Real Time DAG",
+        "ticketKey": "GST360-534",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 1,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Placeholder - Guest360 Test Suite",
+        "workstreamColor": "#64748b",
+        "storyName": "Placeholder - Guest360 Test Suite",
+        "ticketKey": "GST360-729",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 8,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Identity",
+        "workstreamColor": "#8b5cf6",
+        "storyName": "Design Placeholder - Identity | CCN R2 | Create Passwordless OneId Account",
+        "ticketKey": "GST360-439",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 3,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Identity",
+        "workstreamColor": "#8b5cf6",
+        "storyName": "Development Placeholder - Identity | CCN R2 | Create Passwordless OneId Account",
+        "ticketKey": "GST360-440",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 5,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Identity",
+        "workstreamColor": "#8b5cf6",
+        "storyName": "Validation Placeholder - Identity | CCN R2 | Create Passwordless OneId Account",
+        "ticketKey": "GST360-441",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 1,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Identity",
+        "workstreamColor": "#8b5cf6",
+        "storyName": "Design Placeholder - Identity | CCN R2 | Update OneId Account",
+        "ticketKey": "GST360-442",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 3,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Identity",
+        "workstreamColor": "#8b5cf6",
+        "storyName": "Development Placeholder - Identity | CCN R2 | Update OneId Account",
+        "ticketKey": "GST360-443",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 5,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Identity",
+        "workstreamColor": "#8b5cf6",
+        "storyName": "Validation Placeholder - Identity | CCN R2 | Update OneId Account",
+        "ticketKey": "GST360-444",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 1,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Identity",
+        "workstreamColor": "#64748b",
+        "storyName": "Contract Tagging: Apply PII and compliance tags to Guest Experience data contracts",
+        "ticketKey": "GST360-304",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 1,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Identity",
+        "workstreamColor": "#64748b",
+        "storyName": "Contract Tagging: Apply PII and compliance tags to Guest Interaction data contracts",
+        "ticketKey": "GST360-305",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 1,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Identity",
+        "workstreamColor": "#64748b",
+        "storyName": "Contract Tagging: Apply PII and compliance tags to Guest Management data contracts",
+        "ticketKey": "GST360-306",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 1,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Identity",
+        "workstreamColor": "#64748b",
+        "storyName": "Contract Tagging: Apply PII and compliance tags to Hotel & Lodging data contracts",
+        "ticketKey": "GST360-307",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 1,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Identity",
+        "workstreamColor": "#64748b",
+        "storyName": "Contract Tagging: Apply PII and compliance tags to Events & Conferences data contracts",
+        "ticketKey": "GST360-308",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 1,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Identity",
+        "workstreamColor": "#64748b",
+        "storyName": "Contract Tagging: Apply PII and compliance tags to Food & Beverage data contracts",
+        "ticketKey": "GST360-309",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 1,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Guest Identity",
+        "workstreamColor": "#64748b",
+        "storyName": "Contract Tagging: Apply PII and compliance tags to Ticket & Entitlement data contracts",
+        "ticketKey": "GST360-310",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "DPE",
+        "points": 1,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Core Platform",
+        "workstreamColor": "#6366f1",
+        "storyName": "Cloudwatch Logs from IR not representing all API calls",
+        "ticketKey": "GST360-749",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 1,
+        "priority": "Medium",
+        "owners": []
+      },
+      {
+        "workstream": "Core Platform",
+        "workstreamColor": "#6366f1",
+        "storyName": "Force Stop Process if Number of Restarts or Failures Exceeds Threshold",
+        "ticketKey": "GST360-73",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 3,
+        "priority": "Low",
+        "owners": [
+          "Shachy Rivas"
+        ]
+      },
+      {
+        "workstream": "Core Platform",
+        "workstreamColor": "#6366f1",
+        "storyName": "Refine Lagging Watermarks Monitors",
+        "ticketKey": "GST360-436",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 2,
+        "priority": "Medium",
+        "owners": [
+          "Shachy Rivas"
+        ]
+      },
+      {
+        "workstream": "Core Platform",
+        "workstreamColor": "#6366f1",
+        "storyName": "Temporarily Disable Alarms during Deployment",
+        "ticketKey": "GST360-776",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 3,
+        "priority": "Medium",
+        "owners": [
+          "Shachy Rivas"
+        ]
+      },
+      {
+        "workstream": "Guest Events",
+        "workstreamColor": "#ec4899",
+        "storyName": "Guest Event | Source Discovery - Magic Key",
+        "ticketKey": "GST360-769",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 1,
+        "priority": "Medium",
+        "owners": [
+          "Rachelle DeMeyer Mulhall"
+        ]
+      },
+      {
+        "workstream": "Integration",
+        "workstreamColor": "#f59e0b",
+        "storyName": "Enable AID/PK inserts in production Iceberg table",
+        "ticketKey": "GST360-317",
+        "programs": [
+          "CCN R2"
+        ],
+        "role": "Eng",
+        "points": 5,
+        "priority": "Medium",
+        "owners": [
+          "Ryan Anderson"
+        ]
+      }
+    ],
+    "velocityHistory": [
+      {
+        "sprint": "S4",
+        "points": 13
+      },
+      {
+        "sprint": "S5",
+        "points": 27
+      },
+      {
+        "sprint": "S6",
+        "points": 44
+      },
+      {
+        "sprint": "S7",
+        "points": 7
+      },
+      {
+        "sprint": "S17",
+        "points": 0
+      },
+      {
+        "sprint": "S9",
+        "points": 159,
+        "isCurrent": true
+      }
+    ],
+    "avgVelocity": 18,
+    "teamCapacity": [
+      {
+        "name": "Emily Moye",
+        "initials": "EM",
+        "role": "Eng",
+        "committed": 16,
+        "threeSprintAvg": 16,
+        "variance": "avg",
+        "oooDays": [],
+        "oooNote": ""
+      },
+      {
+        "name": "Kimberly Marroquin",
+        "initials": "KM",
+        "role": "Eng",
+        "committed": 8,
+        "threeSprintAvg": 8,
+        "variance": "avg",
+        "oooDays": [
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "oooNote": "PTO \u2014 partial availability"
+      },
+      {
+        "name": "Rachelle DeMeyer Mulhall",
+        "initials": "RM",
+        "role": "Eng",
+        "committed": 1,
+        "threeSprintAvg": 1,
+        "variance": "avg",
+        "oooDays": [],
+        "oooNote": ""
+      },
+      {
+        "name": "Ryan Anderson",
+        "initials": "RA",
+        "role": "Eng",
+        "committed": 5,
+        "threeSprintAvg": 5,
+        "variance": "avg",
+        "oooDays": [],
+        "oooNote": ""
+      },
+      {
+        "name": "Shachy Rivas",
+        "initials": "SR",
+        "role": "Eng",
+        "committed": 8,
+        "threeSprintAvg": 8,
+        "variance": "avg",
+        "oooDays": [],
+        "oooNote": ""
+      }
+    ],
+    "risks": [],
+    "oooSchedule": [
+      {
+        "name": "Kimberly Marroquin",
+        "oooDays": [
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "note": "PTO \u2014 partial availability"
+      }
+    ],
+    "oooNotes": "OOO days from static/data/ooo-schedule.json \u2014 Outlook calendar integration planned."
+  }
+}

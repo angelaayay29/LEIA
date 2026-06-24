@@ -17,12 +17,15 @@ function edit(content, isEditor) {
 function renderTooltip(meta) {
   const li = (arr) => arr.map(x => `<li>${esc(x)}</li>`).join('');
   const ownerLine = `${esc(meta.owner)} — ${esc(meta.ownerWhy)}`;
+  const jiraSection = meta.jiraFields && meta.jiraFields.length
+    ? `<section><h5>Jira fields (GST360)</h5><ul>${li(meta.jiraFields)}</ul></section>` : '';
   return `<h4 class="widget-spec-title">${esc(meta.title)}</h4>
     <div class="widget-spec-inner">
       <section><h5>What it shows</h5><p>${esc(meta.whatItShows)}</p></section>
       <section><h5>Why it matters</h5><p>${esc(meta.whyImportant)}</p></section>
       <section><h5>Display type</h5><p>${esc(meta.displayType)}</p></section>
       <section><h5>Owner</h5><p>${ownerLine}</p></section>
+      ${jiraSection}
       <section><h5>Data sources</h5><ul>${li(meta.dataSources)}</ul></section>
       <section><h5>Processing required</h5><ul>${li(meta.processing)}</ul></section>
     </div>`;
@@ -40,17 +43,60 @@ function renderHeader(identity, isPlanning, isEditor) {
     <div class="sprint-tags">${status} ${tags}</div><div class="sprint-meta">${esc(meta.join(' · '))}</div></div>`;
 }
 
-function renderAiInsight(title, text, isEditor) {
+function normalizeExecItem(item) {
+  if (item == null) return { text: '', checked: false };
+  if (typeof item === 'string') return { text: item, checked: false };
+  return { text: item.text || '', checked: !!item.checked };
+}
+
+function renderExecChecklist(items, section, isEditor) {
+  const list = (items || []).map(normalizeExecItem);
+  if (!list.length) {
+    return '<p class="executive-checklist-empty">No items</p>';
+  }
+  return `<div class="executive-checklist" role="group">${list.map((item, i) => {
+    const id = `exec-${section}-${i}`;
+    return `<div class="executive-check-row">
+      <input type="checkbox" class="executive-check-input" id="${id}"
+        data-exec-section="${section}" data-exec-index="${i}"${item.checked ? ' checked' : ''} />
+      <label class="executive-check-text" for="${id}"${edit('', isEditor)} data-exec-section="${section}" data-exec-index="${i}">${esc(item.text)}</label>
+    </div>`;
+  }).join('')}</div>`;
+}
+
+function renderAiInsight(title, text, brief, isEditor) {
   const body = isEditor
-    ? `<div contenteditable="true" data-field="aiInsight" style="min-height:80px;font-size:0.95rem;line-height:1.7;color:var(--text-secondary)">${esc(text)}</div>`
-    : `<p>${esc(text)}</p>`;
-  return `<div class="ai-insight-card"><h3>${esc(title)}</h3>${body}</div>`;
+    ? `<div class="ai-insight-body" contenteditable="true" data-field="aiInsight">${esc(text)}</div>`
+    : `<p class="ai-insight-body">${esc(text)}</p>`;
+
+  const hasBrief = brief && ((brief.needs && brief.needs.length) || (brief.howToHelp && brief.howToHelp.length));
+  const briefHtml = hasBrief ? `
+    <div class="ai-insight-executive">
+      <div class="ai-insight-divider"></div>
+      <h4 class="ai-insight-subhead">What we need from you</h4>
+      <div class="executive-brief-grid">
+        <div class="executive-brief-panel">
+          <div class="executive-panel-label">Review these</div>
+          ${renderExecChecklist(brief.needs, 'needs', isEditor)}
+        </div>
+        <div class="executive-brief-panel">
+          <div class="executive-panel-label">How you can help</div>
+          ${renderExecChecklist(brief.howToHelp, 'help', isEditor)}
+        </div>
+      </div>
+    </div>` : '';
+
+  return `<div class="ai-insight-card"><h3>${esc(title)}</h3>${body}${briefHtml}</div>`;
 }
 
 function renderHeadlineStats(stats, isEditor) {
   return `<div class="section-title">Headline Stats</div><div class="stat-grid">${stats.map(s => {
-    const hc = s.healthColor ? ` ${s.healthColor}` : '';
-    const delta = s.delta ? `<span class="stat-delta ${s.deltaDirection || 'neutral'}">${esc(s.delta)}</span>` : '';
+    let hc = s.healthColor ? ` ${s.healthColor}` : '';
+    if (!hc && s.baselineCompare != null && s.numericValue != null) {
+      hc = s.numericValue >= s.baselineCompare ? ' green' : ' red';
+    }
+    const deltaDir = s.deltaDirection || 'neutral';
+    const delta = s.delta ? `<span class="stat-delta ${deltaDir}">${esc(s.delta)}</span>` : '';
     const sub = s.subNote ? `<div class="stat-sub">${esc(s.subNote)}</div>` : '';
     const ed = isEditor ? ' contenteditable="true"' : '';
     return `<div class="stat-card"><div class="stat-value${hc}"${ed} data-stat="value">${esc(s.value)}</div>
@@ -74,8 +120,9 @@ function renderProgramProgress(programs, workstreams, isEditor) {
       <span class="workstream-pct">${w.percentage}%</span><span class="pill ${wsStatus(w.status)}">${esc(w.status)}</span></div>`;
   }).join('');
   return `<div class="widget-section-title">Program & Capability Progress</div>
+    <p class="widget-formula-note">Program % = done GST360 tasks ÷ all sprint-attributed tasks for that program (across all sprints). Workstream % uses the same task-count formula.</p>
     <div class="subsection-title">Program Snapshot</div><div class="program-grid">${progCards}</div>
-    <div class="subsection-title" style="margin-top:1.5rem">Capability Workstream Progress</div><div class="workstream-list">${wsRows}</div>`;
+    <div class="subsection-title" style="margin-top:0.75rem">Capability Workstream Progress</div><div class="workstream-list">${wsRows}</div>`;
 }
 
 function renderRetroWorkDetail(d, isEditor) {
@@ -114,7 +161,7 @@ function renderRetroPeople(d) {
       const pct = r.assigned > 0 ? (r.completed/r.assigned)*100 : 100;
       const col = r.status==='Full delivery'?'#10b981':r.status==='Partial'?'#f59e0b':'#06b6d4';
       h += `<tr><td><div class="avatar-row"><span class="avatar">${esc(r.initials)}</span>${esc(r.name)}</div></td>
-        <td>${pill(r.role,'purple')}</td><td><div class="delivery-bar-track"><div class="delivery-bar-fill" style="width:${Math.min(pct,100)}%;background:${col}"></div></div></td>
+        <td>${pill(r.role,'blue')}</td><td><div class="delivery-bar-track"><div class="delivery-bar-fill" style="width:${Math.min(pct,100)}%;background:${col}"></div></div></td>
         <td>${r.completed} → ${r.assigned||r.completed}</td><td><span class="pill ${statusPill[r.status]}">${esc(r.status)}</span></td><td>${esc(r.workstream)}</td></tr>`;
     });
     return h;
@@ -175,12 +222,16 @@ function renderPlanningWorkDetail(d, isEditor) {
         <td><span class="pill ${role[r.role]}">${esc(r.role)}</span></td><td>${r.points}</td><td><span class="pill ${pri[r.priority]}">${esc(r.priority)}</span></td><td><div style="display:flex;gap:4px">${owners}</div></td></tr>`;
     });
   });
-  const maxP = Math.max(...d.velocityHistory.map(v=>v.points), d.avgVelocity);
+  const maxP = Math.max(...d.velocityHistory.map(v=>v.points), d.avgVelocity, 1);
   const current = d.velocityHistory.find(v=>v.isCurrent);
   const delta = (current?.points||0) - d.avgVelocity;
-  const bars = d.velocityHistory.map(v =>
-    `<div class="velocity-bar-group"><div class="velocity-bar ${v.isCurrent?'current':'historical'}" style="height:${(v.points/maxP)*140}px" title="${esc(v.sprint)}: ${v.points} pts"></div><span class="velocity-bar-label">${esc(v.sprint)}</span></div>`
-  ).join('');
+  const deltaColor = delta >= 0 ? '#10b981' : '#ef4444';
+  const bars = d.velocityHistory.map(v => {
+    const above = v.points >= d.avgVelocity;
+    const barClass = v.isCurrent ? 'current' : 'historical';
+    const cmpClass = above ? 'above-avg' : 'below-avg';
+    return `<div class="velocity-bar-group"><div class="velocity-bar ${barClass} ${cmpClass}" style="height:${(v.points/maxP)*140}px" title="${esc(v.sprint)}: ${v.points} pts (${above ? 'at/above' : 'below'} avg ${d.avgVelocity})"></div><span class="velocity-bar-label">${esc(v.sprint)}</span></div>`;
+  }).join('');
 
   return `<div class="widget-section-title">Sprint Plan Detail</div>
     <div class="subsection-title">Sprint Goals by Program</div><div class="goals-grid">${goalsHtml}</div>
@@ -188,28 +239,43 @@ function renderPlanningWorkDetail(d, isEditor) {
     <table class="data-table"><thead><tr><th>Workstream</th><th>Story</th><th>Program</th><th>Role</th><th>Points</th><th>Priority</th><th>Owners</th></tr></thead><tbody>${tableRows}</tbody></table>
     <div class="subsection-title" style="margin-top:1.5rem">Velocity & Commitment History</div>
     <div class="velocity-block">
-      <div class="velocity-callout">Committed: <strong>${current?.points||0} pts</strong> · Avg velocity: <strong>${d.avgVelocity} pts</strong> · Delta: <strong style="color:${delta>0?'#f59e0b':'#10b981'}">${delta>0?'+':''}${delta} pts</strong></div>
-      <div class="velocity-chart"><div class="velocity-avg-line" style="bottom:${(d.avgVelocity/maxP)*140}px"></div>${bars}</div>
+      <div class="velocity-callout">Committed: <strong>${current?.points||0} pts</strong> · Avg velocity: <strong>${d.avgVelocity} pts</strong> · vs baseline: <strong style="color:${deltaColor}">${delta>0?'+':''}${delta} pts</strong> <span class="velocity-legend"><span class="vel-dot above"></span> at/above avg</span> <span class="velocity-legend"><span class="vel-dot below"></span> below avg</span></div>
+      <div class="velocity-chart"><div class="velocity-avg-line" style="bottom:${(d.avgVelocity/maxP)*140}px" title="Rolling avg: ${d.avgVelocity} pts"></div>${bars}</div>
     </div>`;
+}
+
+function renderOooBadges(oooDays, note) {
+  if (!oooDays || !oooDays.length) return '';
+  const days = oooDays.map(d =>
+    `<span class="ooo-day-badge" title="${esc(note || 'Out of office')}"><span class="ooo-warn" aria-hidden="true">⚠</span> D${d}</span>`
+  ).join('');
+  return `<span class="ooo-day-wrap">${days}</span>`;
 }
 
 function renderPlanningPeople(d) {
   const varPill = { avg:['pill-blue','= Avg'], above:['pill-green','↑ Above'], below:['pill-red','↓ Below'] };
+  const sprintCol = d.identity && d.identity.sprintNumber ? `S${d.identity.sprintNumber} Points` : 'Committed';
   const renderGroup = (label, rows) => {
     let h = `<tr class="group-header"><td colspan="5">${esc(label)}</td></tr>`;
     rows.forEach(r => {
-      const v = varPill[r.variance];
-      h += `<tr><td><div class="avatar-row"><span class="avatar">${esc(r.initials)}</span>${esc(r.name)}</div></td>
-        <td>${pill(r.role,'purple')}</td><td style="font-weight:700;font-size:1rem">${r.committed}</td><td style="color:var(--text-muted)">${r.threeSprintAvg}</td>
-        <td><span class="pill ${v[0]}">${v[1]}</span>${r.availability?`<span class="pill pill-red" style="margin-left:6px;font-size:0.6rem">${esc(r.availability)}</span>`:''}</td></tr>`;
+      const v = varPill[r.variance] || varPill.avg;
+      const ooo = renderOooBadges(r.oooDays, r.oooNote);
+      h += `<tr class="${r.oooDays && r.oooDays.length ? 'has-ooo' : ''}"><td><div class="avatar-row"><span class="avatar">${esc(r.initials)}</span>${esc(r.name)}</div></td>
+        <td>${pill(r.role,'blue')}</td><td style="font-weight:700;font-size:1rem">${r.committed}</td><td style="color:var(--text-muted)">${r.threeSprintAvg}</td>
+        <td><span class="pill ${v[0]}">${v[1]}</span>${ooo}${r.availability && !ooo ? `<span class="pill pill-amber ooo-summary-pill">${esc(r.availability)}</span>` : ''}</td></tr>`;
     });
     return h;
   };
+  const oooBanner = (d.oooSchedule && d.oooSchedule.length)
+    ? `<div class="ooo-schedule-banner"><span class="ooo-warn" aria-hidden="true">⚠</span> OOO this sprint: ${d.oooSchedule.map(o =>
+        `<strong>${esc(o.name)}</strong> (${o.oooDays.map(day => 'D' + day).join(', ')})`
+      ).join(' · ')}</div>` : '';
   return `<div class="widget-section-title">Team Capacity & Benchmark</div>
-    <table class="data-table"><thead><tr><th>Team Member</th><th>Role</th><th>S24 Points</th><th>3-Sprint Avg</th><th>Variance</th></tr></thead><tbody>
+    ${oooBanner}
+    <table class="data-table"><thead><tr><th>Team Member</th><th>Role</th><th>${esc(sprintCol)}</th><th>3-Sprint Avg</th><th>Variance / OOO</th></tr></thead><tbody>
     ${renderGroup('Engineering (Eng)', d.teamCapacity.filter(r=>r.role==='Eng'))}
     ${renderGroup('Data Product Engineering (DPE)', d.teamCapacity.filter(r=>r.role==='DPE'))}
-    </tbody></table>${d.oooNotes?`<p style="font-size:0.75rem;color:var(--text-muted);margin-top:0.75rem;font-style:italic">${esc(d.oooNotes)}</p>`:''}`;
+    </tbody></table>${d.oooNotes?`<p class="ooo-notes-line"><span class="ooo-warn" aria-hidden="true">⚠</span> ${esc(d.oooNotes)}</p>`:''}`;
 }
 
 function renderPlanningRisks(d, isEditor) {
@@ -227,7 +293,8 @@ function renderPlanningRisks(d, isEditor) {
 function renderRetroWidget(id, data, isEditor) {
   switch(id) {
     case 'header': return renderHeader(data.identity, false, isEditor);
-    case 'ai-insight': return renderAiInsight('What happened this sprint', data.aiInsight, isEditor);
+    case 'ai-insight': return renderAiInsight('What happened this sprint', data.aiInsight, data.executiveBrief, isEditor);
+    case 'executive-brief': return '';
     case 'headline-stats': return renderHeadlineStats(data.headlineStats, isEditor);
     case 'program-progress': return renderProgramProgress(data.programSnapshots, data.workstreamProgress, isEditor);
     case 'work-detail': return renderRetroWorkDetail(data, isEditor);
@@ -240,7 +307,12 @@ function renderRetroWidget(id, data, isEditor) {
 function renderPlanningWidget(id, data, isEditor) {
   switch(id) {
     case 'header': return renderHeader(data.identity, true, isEditor);
-    case 'ai-insight': return renderAiInsight('Going into Sprint 24', data.aiInsight, isEditor);
+    case 'ai-insight': {
+      const n = data.identity && data.identity.sprintNumber;
+      const title = n ? ('Going into Sprint ' + n) : 'Sprint planning insight';
+      return renderAiInsight(title, data.aiInsight, data.executiveBrief, isEditor);
+    }
+    case 'executive-brief': return '';
     case 'headline-stats': return renderHeadlineStats(data.headlineStats, isEditor);
     case 'program-progress': return renderProgramProgress(data.programSnapshots, data.workstreamProgress, isEditor);
     case 'work-detail': return renderPlanningWorkDetail(data, isEditor);

@@ -31,11 +31,34 @@
   }
 
   let user = JSON.parse(sessionGet('user') || 'null');
+  let jiraSnapshot = null;
   let retroData = JSON.parse(storageGet('retro-data') || 'null') || JSON.parse(JSON.stringify(LEIA_INITIAL_RETRO));
   let planningData = JSON.parse(storageGet('planning-data') || 'null') || JSON.parse(JSON.stringify(LEIA_INITIAL_PLANNING));
-  let retroOrder = [...LEIA_WIDGET_ORDER];
-  let planningOrder = [...LEIA_WIDGET_ORDER];
+  let retroOrder = [...LEIA_WIDGET_ORDER].filter(id => id !== 'executive-brief');
+  let planningOrder = [...LEIA_WIDGET_ORDER].filter(id => id !== 'executive-brief');
   let dragId = null;
+
+  function applyJiraSnapshot(snapshot) {
+    if (!snapshot || !snapshot.retro || !snapshot.planning) return;
+    jiraSnapshot = snapshot;
+    const hasLocal = storageGet('retro-data') || storageGet('planning-data');
+    if (!hasLocal) {
+      retroData = JSON.parse(JSON.stringify(snapshot.retro));
+      planningData = JSON.parse(JSON.stringify(snapshot.planning));
+    }
+  }
+
+  function resetToJiraSnapshot() {
+    if (!jiraSnapshot) return;
+    retroData = JSON.parse(JSON.stringify(jiraSnapshot.retro));
+    planningData = JSON.parse(JSON.stringify(jiraSnapshot.planning));
+    localStorage.removeItem(STORAGE_PREFIX + 'retro-data');
+    localStorage.removeItem(STORAGE_PREFIX + 'planning-data');
+    localStorage.removeItem(LEGACY_PREFIX + 'retro-data');
+    localStorage.removeItem(LEGACY_PREFIX + 'planning-data');
+    const page = (location.hash.slice(1) === 'planning') ? 'planning' : 'retro';
+    renderDashboard(page);
+  }
 
   const app = document.getElementById('app');
 
@@ -141,7 +164,28 @@
       <li><a href="#planning" class="${active==='planning'?'active':''}">Planning</a></li></ul>
       <div class="nav-user"><span>${esc(user.displayName)}</span>
       <span class="role-badge ${roleCls}">${isEditor()?'Editor':'Viewer'}</span>
-      <button class="btn-logout" id="logout-btn">Logout</button></div></nav><div class="gradient-line lightsaber-line"></div>`;
+      <button class="btn-logout" id="logout-btn">Logout</button></div></nav>
+      <div class="gradient-line lightsaber-line"></div>`;
+  }
+
+  function renderJiraFooter() {
+    const meta = jiraSnapshot && jiraSnapshot.meta;
+    if (!meta) return '';
+    const boardUrl = meta.boardUrl || '#';
+    const retro = meta.retroSprint || '—';
+    const planning = meta.planningSprint || '—';
+    const synced = meta.syncedAt ? new Date(meta.syncedAt) : null;
+    const when = synced && !isNaN(synced.getTime())
+      ? synced.toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' })
+      : 'unknown';
+    return `<footer class="jira-sync-footer">
+      <div class="jira-sync-footer-inner">
+        <span class="jira-sync-dot" aria-hidden="true"></span>
+        <span class="jira-sync-text">GST360 Jira · Retro: <strong>${esc(retro)}</strong> · Planning: <strong>${esc(planning)}</strong> · synced ${esc(when)}</span>
+        <a class="jira-sync-link" href="${esc(boardUrl)}" target="_blank" rel="noopener noreferrer">Open board 608 ↗</a>
+        ${isEditor() ? '<button type="button" class="btn-jira-reset" id="jira-reset-btn" title="Discard local edits and reload Jira snapshot">Reset to Jira</button>' : ''}
+      </div>
+    </footer>`;
   }
 
   function renderDashboard(page) {
@@ -162,7 +206,7 @@
       </div>`;
     }).join('');
 
-    app.innerHTML = renderNav(page) + `<div class="page-content" id="dashboard">${widgetsHtml}</div>`;
+    app.innerHTML = renderNav(page) + `<div class="page-content" id="dashboard">${widgetsHtml}</div>` + renderJiraFooter();
 
     document.body.classList.toggle('editor-mode', isEditor());
 
@@ -172,12 +216,20 @@
       location.hash = 'login';
     });
 
+    const jiraReset = document.getElementById('jira-reset-btn');
+    if (jiraReset) {
+      jiraReset.addEventListener('click', () => {
+        if (confirm('Replace local edits with the latest Jira snapshot?')) resetToJiraSnapshot();
+      });
+    }
+
     document.querySelectorAll('.nav-links a').forEach(a => {
       a.addEventListener('click', () => fireStarRain());
     });
 
-    bindWidgetInteractions();
+    bindWidgetInteractions(page);
     bindDragDrop(page);
+    bindExecutiveBrief(page);
     if (isEditor()) bindEditable(page);
   }
 
@@ -260,6 +312,30 @@
     });
   }
 
+  function bindExecutiveBrief(page) {
+    const data = page === 'retro' ? retroData : planningData;
+    if (!data.executiveBrief) return;
+
+    function ensureItem(list, index) {
+      if (!list || list[index] == null) return { text: '', checked: false };
+      if (typeof list[index] === 'string') {
+        list[index] = { text: list[index], checked: false };
+      }
+      return list[index];
+    }
+
+    document.querySelectorAll('.executive-check-input').forEach(cb => {
+      cb.addEventListener('change', () => {
+        const item = ensureItem(
+          cb.dataset.execSection === 'needs' ? data.executiveBrief.needs : data.executiveBrief.howToHelp,
+          Number(cb.dataset.execIndex)
+        );
+        item.checked = cb.checked;
+        saveData();
+      });
+    });
+  }
+
   function bindEditable(page) {
     const data = page === 'retro' ? retroData : planningData;
 
@@ -275,6 +351,23 @@
       if (val) val.addEventListener('blur', () => { data.headlineStats[i].value = val.textContent.trim(); saveData(); });
       if (lbl) lbl.addEventListener('blur', () => { data.headlineStats[i].label = lbl.textContent.trim(); saveData(); });
     });
+
+    if (data.executiveBrief) {
+      document.querySelectorAll('[data-exec-section].executive-check-text').forEach(el => {
+        el.addEventListener('blur', () => {
+          const list = el.dataset.execSection === 'needs'
+            ? data.executiveBrief.needs
+            : data.executiveBrief.howToHelp;
+          const i = Number(el.dataset.execIndex);
+          if (!list) return;
+          const prev = typeof list[i] === 'string'
+            ? { text: list[i], checked: false }
+            : { text: list[i]?.text || '', checked: !!list[i]?.checked };
+          list[i] = { text: el.textContent.trim(), checked: prev.checked };
+          saveData();
+        });
+      });
+    }
   }
 
   function initScrollAmbience() {
@@ -320,5 +413,13 @@
 
   window.addEventListener('hashchange', route);
   initScrollAmbience();
-  route();
+
+  if (typeof loadLeiaJiraSnapshot === 'function') {
+    loadLeiaJiraSnapshot()
+      .then(applyJiraSnapshot)
+      .catch(() => { /* mock fallback remains */ })
+      .finally(route);
+  } else {
+    route();
+  }
 })();
