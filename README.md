@@ -1,9 +1,7 @@
 # LEIA
 **Leadership Executive Intelligence and Agile Tracker**
 
-Live site: [angelaayay29.github.io/ORBIT](https://angelaayay29.github.io/ORBIT/)
-
-*(GitHub repo and Pages URL may still say ORBIT until the repository is renamed.)*
+Live site: [angelaayay29.github.io/LEIA](https://angelaayay29.github.io/LEIA/)
 
 ---
 
@@ -41,7 +39,7 @@ If 8888 is busy, `Start LEIA.command` will try 8889, 8890, etc. Do not open `ind
 
 No setup required. Open the link:
 
-**[https://angelaayay29.github.io/ORBIT/](https://angelaayay29.github.io/ORBIT/)**
+**[https://angelaayay29.github.io/LEIA/](https://angelaayay29.github.io/LEIA/)**
 
 You'll be prompted to log in. Two user types exist:
 

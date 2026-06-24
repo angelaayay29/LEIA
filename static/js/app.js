@@ -41,10 +41,20 @@
   function applyJiraSnapshot(snapshot) {
     if (!snapshot || !snapshot.retro || !snapshot.planning) return;
     jiraSnapshot = snapshot;
-    const hasLocal = storageGet('retro-data') || storageGet('planning-data');
-    if (!hasLocal) {
+    const snapshotVersion = snapshot.meta?.syncedAt || 'unknown';
+    const appliedVersion = storageGet('jira-applied-version');
+    const hasLocalEdits = storageGet('has-local-edits') === 'true';
+    if (!hasLocalEdits || appliedVersion !== snapshotVersion) {
       retroData = JSON.parse(JSON.stringify(snapshot.retro));
       planningData = JSON.parse(JSON.stringify(snapshot.planning));
+      storageSet('jira-applied-version', snapshotVersion);
+      if (appliedVersion !== snapshotVersion) {
+        storageSet('has-local-edits', 'false');
+        localStorage.removeItem(STORAGE_PREFIX + 'retro-data');
+        localStorage.removeItem(STORAGE_PREFIX + 'planning-data');
+        localStorage.removeItem(LEGACY_PREFIX + 'retro-data');
+        localStorage.removeItem(LEGACY_PREFIX + 'planning-data');
+      }
     }
   }
 
@@ -52,6 +62,8 @@
     if (!jiraSnapshot) return;
     retroData = JSON.parse(JSON.stringify(jiraSnapshot.retro));
     planningData = JSON.parse(JSON.stringify(jiraSnapshot.planning));
+    storageSet('has-local-edits', 'false');
+    if (jiraSnapshot.meta?.syncedAt) storageSet('jira-applied-version', jiraSnapshot.meta.syncedAt);
     localStorage.removeItem(STORAGE_PREFIX + 'retro-data');
     localStorage.removeItem(STORAGE_PREFIX + 'planning-data');
     localStorage.removeItem(LEGACY_PREFIX + 'retro-data');
@@ -67,6 +79,7 @@
   function saveData() {
     storageSet('retro-data', JSON.stringify(retroData));
     storageSet('planning-data', JSON.stringify(planningData));
+    storageSet('has-local-edits', 'true');
   }
 
   function fireStarRain() {
